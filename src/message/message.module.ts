@@ -22,7 +22,6 @@ import { UserBlocksModule } from '../user-blocks/user-blocks.module';
     forwardRef(() => PermissionsModule),
     forwardRef(() => ConversationModule),
     UserModule,
-    ConfigService,
     SafeguardingModule,
     UserBlocksModule,
   ],

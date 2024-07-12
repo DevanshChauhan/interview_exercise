@@ -55,6 +55,7 @@ import { UserBlocksModule } from './user-blocks/user-blocks.module';
     }),
     ConfigModule.forRoot({
       ignoreEnvFile: true,
+      isGlobal: true,
       load: [configuration],
     }),
     PermissionsModule,

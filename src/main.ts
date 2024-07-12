@@ -4,8 +4,11 @@ import { SwaggerModule, DocumentBuilder } from '@nestjs/swagger';
 import { writeFileSync } from 'fs';
 import { join } from 'path';
 import { loadUbEnv } from './configuration/configuration';
+import mongoose from 'mongoose'; // Import mongoose
 
 async function bootstrap() {
+  mongoose.set('useCreateIndex', true); // Ensure Mongoose uses createIndex instead of ensureIndex
+
   loadUbEnv('UB_CHAT_ENV_INJECT');
   const app = await NestFactory.create(AppModule);
 

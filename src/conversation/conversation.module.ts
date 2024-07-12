@@ -1,4 +1,5 @@
 import { ConfigService } from '@nestjs/config';
+import { ConfigModule } from '@nestjs/config';
 import { forwardRef, Module } from '@nestjs/common';
 import { MongooseModule } from '@nestjs/mongoose';
 
@@ -30,13 +31,16 @@ import { SocketsModule } from '../sockets/sockets.module';
     forwardRef(() => PermissionsModule),
     forwardRef(() => MessageModule),
     CacheManagerModule,
-    ConfigService,
     SafeguardingModule,
     SocketsModule,
     UserModule,
   ],
   providers: [
-    ConfigService,
+    {
+      provide: 'CONFIG_SERVICE',
+      useFactory: (configService: ConfigService) => configService,
+      inject: [ConfigService],
+    },
     ConversationChannel,
     ConversationData,
     ConversationLogic,
